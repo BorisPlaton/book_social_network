@@ -1,6 +1,13 @@
 @import "_variables.scss";
 @import "_mixins.scss";
 
+@each $button, $style in $buttons {
+    @include custom_button($button, $style);
+}
+
+@each $color, $value in $colors {
+    @include link_styles($color, $value);
+}
 
 body {
     background-color: $darkblue;
@@ -20,9 +27,10 @@ header {
 }
 
 nav {
-    @include link_style($lightgrey);
-    border-top: 1px solid $blue;
-    border-bottom: 1px solid $blue;
+    @include get_colored_link($lightgrey);
+
+    border-top: 1px solid $greyblue;
+    border-bottom: 1px solid $greyblue;
     color: white;
     font-size: 16px;
     background-color: darken($darkblue, 5%);
@@ -39,5 +47,6 @@ footer {
 }
 
 .blue-line {
-    border-bottom: 1px solid $blue;
+    border-bottom: 1px solid $greyblue;
 }
+

@@ -1,0 +1,23 @@
+$colors: (
+    "darkblue": #22334d,
+    "gold": #eb9a17,
+    "lightgrey": #e8e8e8,
+    "greyblue": #324a70,
+);
+
+$darkblue: map-get($colors, "darkblue");
+$gold: map-get($colors, "gold");
+$lightgrey: map-get($colors, "lightgrey");
+$greyblue: map-get($colors, "greyblue");
+
+$buttons: (
+    "darkblue": (
+        "background": $darkblue,
+        "text_color": white,
+    ),
+    "blue": (
+        "background": $greyblue,
+        "text_color": white,
+    )
+);
+

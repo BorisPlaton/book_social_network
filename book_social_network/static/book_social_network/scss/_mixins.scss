@@ -1,0 +1,37 @@
+@mixin get_colored_link($color) {
+    a {
+        color: $color;
+
+        &:hover{
+            color: lighten($color, 25%)
+        }
+    }
+}
+
+@mixin link_styles($color, $value) {
+    a.clink-#{$color} {
+        color: $value;
+
+        &:hover{
+            color: lighten($value, 15%)
+        }
+    }
+}
+
+@mixin custom_button($name, $button) {
+    $background_color: map-get($button, "background");
+    $text_color: map-get($button, "text_color");
+
+    .cbtn-#{$name} {
+        background-color: $background_color;
+        color: $text_color;
+        transition: all 0.1s ease-in-out;
+        border: 0;
+        font-size: 14px;
+        padding: 5px 15px;
+
+        &:hover {
+            background-color: lighten($background_color, 15);
+        }
+    }
+}

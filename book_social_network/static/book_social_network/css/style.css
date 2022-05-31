@@ -1,0 +1,108 @@
+.cbtn-darkblue {
+  background-color: #22334d;
+  color: white;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  padding: 5px 15px;
+}
+
+.cbtn-darkblue:hover {
+  background-color: #395682;
+}
+
+.cbtn-blue {
+  background-color: #324a70;
+  color: white;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  padding: 5px 15px;
+}
+
+.cbtn-blue:hover {
+  background-color: #4a6da5;
+}
+
+a.clink-darkblue {
+  color: #22334d;
+}
+
+a.clink-darkblue:hover {
+  color: #395682;
+}
+
+a.clink-gold {
+  color: #eb9a17;
+}
+
+a.clink-gold:hover {
+  color: #f1b95d;
+}
+
+a.clink-lightgrey {
+  color: #e8e8e8;
+}
+
+a.clink-lightgrey:hover {
+  color: white;
+}
+
+a.clink-greyblue {
+  color: #324a70;
+}
+
+a.clink-greyblue:hover {
+  color: #4a6da5;
+}
+
+body {
+  background-color: #22334d;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+header {
+  color: white;
+}
+
+header .logo {
+  font-size: 24px;
+}
+
+nav {
+  border-top: 1px solid #324a70;
+  border-bottom: 1px solid #324a70;
+  color: white;
+  font-size: 16px;
+  background-color: #1a273b;
+}
+
+nav a {
+  color: #e8e8e8;
+}
+
+nav a:hover {
+  color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.content-block {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.blue-line {
+  border-bottom: 1px solid #324a70;
+}
