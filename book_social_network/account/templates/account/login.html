@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container pt-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-4">
+            <div class="content-block rounded p-3">
+                <h4 class="text-center">Log in</h4>
+
+                <div class="blue-line"></div>
+                
+                <div class="py-2">
+                    <form action="{% url 'account:user_login' %}" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="row row-cols-1 justify-content-center g-2">
+                            {% for field in form %}
+                            <div class="col-auto">
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

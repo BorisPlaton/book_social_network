@@ -1,0 +1,43 @@
+@import "_variables.scss";
+@import "_mixins.scss";
+
+
+body {
+    background-color: $darkblue;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+}
+
+header {
+    color: white;
+    .logo {
+        font-size: 24px;
+    }
+}
+
+nav {
+    @include link_style($lightgrey);
+    border-top: 1px solid $blue;
+    border-bottom: 1px solid $blue;
+    color: white;
+    font-size: 16px;
+    background-color: darken($darkblue, 5%);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.content-block {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.blue-line {
+    border-bottom: 1px solid $blue;
+}
