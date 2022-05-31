@@ -7,6 +7,8 @@
 
 @each $color, $value in $colors {
     @include link_styles($color, $value);
+    @include border_line($color, $value);
+    @include background_color($color, $value);
 }
 
 body {
@@ -29,11 +31,8 @@ header {
 nav {
     @include get_colored_link($lightgrey);
 
-    border-top: 1px solid $greyblue;
-    border-bottom: 1px solid $greyblue;
     color: white;
     font-size: 16px;
-    background-color: darken($darkblue, 5%);
 }
 
 footer {
@@ -42,11 +41,6 @@ footer {
     width: 100%;
 }
 
-.content-block {
-    background: rgba(0, 0, 0, 0.5);
-}
-
 .blue-line {
     border-bottom: 1px solid $greyblue;
 }
-

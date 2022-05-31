@@ -1,17 +1,65 @@
-<div class="container">
-    <div class="row">
-        <div class="col-auto"><a href="">Main</a></div>
-        <div class="col-auto"><a href="">First link</a></div>
-        <div class="col-auto"><a href="">Second link</a></div>
-        <div class="col-auto"><a href="">Third link</a></div>
-        <div class="col">
-            <div class="row justify-content-end">
-                <div class="col-auto">
-                    <a href="{% url 'account:user_login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
+<!-- visible part -->
+<div class="d-lg-block d-none py-2 shadow-sm border-greyblue-bottom border-greyblue-top bg-indigo">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-auto"><a href="">Main</a></div>
+            <div class="col-auto"><a href="">First link</a></div>
+            <div class="col-auto"><a href="">Second link</a></div>
+            <div class="col-auto"><a href="">Third link</a></div>
+            <div class="col">
+                <div class="row justify-content-end">
+                    {{ user.username }}
+                    {% if user.is_authenticated %}
+                    <div class="col-auto"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
+                    <div class="col-auto"><a href="{% url 'account:user_logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
+                    {% else %}
+                    <div class="col-auto">
+                        <a href="{% url 'account:user_login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
+                    </div>
+                    {% endif %}
                 </div>
-                <div class="col-auto"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
-                <div class="col-auto"><a href=""><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
             </div>
         </div>
+
+    </div>
+</div>
+
+<!-- collapse part -->
+<div class="py-2 d-lg-none d-block border-greyblue-bottom border-greyblue-top bg-indigo">
+    <div class="container">
+        <button class="btn-deepblue shadow-sm " type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+</div>
+
+<div class="d-lg-none d-block content-block">
+    <div class="collapse border-greyblue-bottom bg-deepblue" id="collapseNavbar">
+
+        <div class="container">
+            <div class="py-2 shadow-sm">
+                <div class="row row-cols-1">
+                    <div class="col"><a href="">Main</a></div>
+                    <div class="col"><a href="">First link</a></div>
+                    <div class="col"><a href="">Second link</a></div>
+                    <div class="col"><a href="">Third link</a></div>
+                    <div class="col">
+                        <div class="row justify-content-end">
+                            {{ user.username }}
+                            {% if user.is_authenticated %}
+                            <div class="col"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
+                            <div class="col"><a href="{% url 'account:user_logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
+                            {% else %}
+                            <div class="col">
+                                <a href="{% url 'account:user_login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
