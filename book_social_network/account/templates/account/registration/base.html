@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load account_tags %}
+
+{% block content %}
+<div class="container pt-4">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12"></div>
+
+        <div class="col-lg-4 col-md-6 col-8">
+            <div class="bg-deepblue rounded p-3">
+                {% block form_content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

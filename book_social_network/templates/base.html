@@ -22,12 +22,32 @@
 </nav>
 
 <main>
-{% block content %}
+    <div class="container-fluid">
+        <div class="mt-3">
 
-{% endblock %}
+            <div class="row g-2">
+
+                <!-- Sidebar -->
+                <div class="col-auto">
+
+                </div>
+
+                <!-- Main Content -->
+                <div class="col">
+                    <div class="container">
+                        {% include 'includes/alert.html' %}
+
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </main>
-
-<aside></aside>
 
 <footer>
     {% include 'includes/footer.html' %}

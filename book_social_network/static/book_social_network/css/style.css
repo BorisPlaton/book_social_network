@@ -4,7 +4,7 @@
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border: 0;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: .2rem;
   padding: 5px 15px;
 }
@@ -20,7 +20,7 @@
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border: 0;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: .2rem;
   padding: 5px 15px;
 }
@@ -36,7 +36,7 @@
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border: 0;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: .2rem;
   padding: 5px 15px;
 }
@@ -52,7 +52,7 @@
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border: 0;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: .2rem;
   padding: 5px 15px;
 }
@@ -62,11 +62,11 @@
   color: white;
 }
 
-a.clink-darkblue {
+a.link-darkblue {
   color: #1d2e47;
 }
 
-a.clink-darkblue:hover {
+a.link-darkblue:hover {
   color: #33517d;
 }
 
@@ -94,11 +94,11 @@ a.clink-darkblue:hover {
   background-color: #1d2e47;
 }
 
-a.clink-gold {
+a.link-gold {
   color: #eb9a17;
 }
 
-a.clink-gold:hover {
+a.link-gold:hover {
   color: #f1b95d;
 }
 
@@ -126,11 +126,11 @@ a.clink-gold:hover {
   background-color: #eb9a17;
 }
 
-a.clink-lightgrey {
+a.link-lightgrey {
   color: #e8e8e8;
 }
 
-a.clink-lightgrey:hover {
+a.link-lightgrey:hover {
   color: white;
 }
 
@@ -158,11 +158,11 @@ a.clink-lightgrey:hover {
   background-color: #e8e8e8;
 }
 
-a.clink-greyblue {
+a.link-greyblue {
   color: #324a70;
 }
 
-a.clink-greyblue:hover {
+a.link-greyblue:hover {
   color: #4a6da5;
 }
 
@@ -190,11 +190,11 @@ a.clink-greyblue:hover {
   background-color: #324a70;
 }
 
-a.clink-deepblue {
+a.link-deepblue {
   color: #0c1624;
 }
 
-a.clink-deepblue:hover {
+a.link-deepblue:hover {
   color: #1f395d;
 }
 
@@ -222,11 +222,11 @@ a.clink-deepblue:hover {
   background-color: #0c1624;
 }
 
-a.clink-snow {
+a.link-snow {
   color: #f2f2f2;
 }
 
-a.clink-snow:hover {
+a.link-snow:hover {
   color: white;
 }
 
@@ -254,11 +254,11 @@ a.clink-snow:hover {
   background-color: #f2f2f2;
 }
 
-a.clink-indigo {
+a.link-indigo {
   color: #15253d;
 }
 
-a.clink-indigo:hover {
+a.link-indigo:hover {
   color: #294876;
 }
 

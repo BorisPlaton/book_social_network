@@ -1,21 +1,26 @@
+{% load account_tags %}
 <!-- visible part -->
 <div class="d-lg-block d-none py-2 shadow-sm border-greyblue-bottom border-greyblue-top bg-indigo">
     <div class="container">
 
         <div class="row">
-            <div class="col-auto"><a href="">Main</a></div>
-            <div class="col-auto"><a href="">First link</a></div>
-            <div class="col-auto"><a href="">Second link</a></div>
-            <div class="col-auto"><a href="">Third link</a></div>
+            {% if user.is_authenticated %}
+            <div class="col-auto">
+                <a href="{% url 'account:dashboard' %}" class="{% current_section request.path 'account:dashboard' %}">My dashboard</a>
+            </div>
+            <div class="col-auto"><a href="">Images</a></div>
+            <div class="col-auto"><a href="">People</a></div>
+            {% endif %}
             <div class="col">
                 <div class="row justify-content-end">
-                    {{ user.username }}
                     {% if user.is_authenticated %}
-                    <div class="col-auto"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
-                    <div class="col-auto"><a href="{% url 'account:user_logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
+                    <div class="col-auto">
+                        <a href=""><i class="bi bi-person-circle me-1"></i>My profile</a>
+                    </div>
+                    <div class="col-auto"><a href="{% url 'account:logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
                     {% else %}
                     <div class="col-auto">
-                        <a href="{% url 'account:user_login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
+                        <a href="{% url 'account:login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
                     </div>
                     {% endif %}
                 </div>
@@ -40,23 +45,19 @@
         <div class="container">
             <div class="py-2 shadow-sm">
                 <div class="row row-cols-1">
-                    <div class="col"><a href="">Main</a></div>
-                    <div class="col"><a href="">First link</a></div>
-                    <div class="col"><a href="">Second link</a></div>
-                    <div class="col"><a href="">Third link</a></div>
+                    {% if user.is_authenticated %}
+                    <div class="col"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
                     <div class="col">
-                        <div class="row justify-content-end">
-                            {{ user.username }}
-                            {% if user.is_authenticated %}
-                            <div class="col"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
-                            <div class="col"><a href="{% url 'account:user_logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
-                            {% else %}
-                            <div class="col">
-                                <a href="{% url 'account:user_login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
-                            </div>
-                            {% endif %}
-                        </div>
+                        <a href="{% url 'account:dashboard' %}" class="{% current_section request.path 'account:dashboard' %}"><i class="bi bi-view-stacked me-1"></i>My Dashboard</a>
                     </div>
+                    <div class="col"><a href=""><i class="bi bi-image me-1"></i>Images</a></div>
+                    <div class="col"><a href=""><i class="bi bi-people-fill me-1"></i>People</a></div>
+                    <div class="col"><a href="{% url 'account:logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
+                    {% else %}
+                    <div class="col">
+                        <a href="{% url 'account:login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
