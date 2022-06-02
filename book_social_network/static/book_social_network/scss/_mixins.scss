@@ -18,23 +18,17 @@
     }
 }
 
-@mixin custom_button($name, $button) {
-    $background_color: map-get($button, "background");
-    $text_color: map-get($button, "text_color");
+@mixin background_color($color, $value) {
 
-    .btn-#{$name} {
-        background-color: $background_color;
-        color: $text_color;
-        transition: all 0.1s ease-in-out;
-        border: 0;
-        font-size: 14px;
-        border-radius: .2rem;
-        padding: 5px 15px;
+    .bg-#{$color} {
+        background-color: $value;
+    }
 
-        &:hover {
-            background-color: lighten($background_color, 15);
-            color: lighten($text_color, 10)
-        }
+}
+
+@mixin coloted_text($color, $value) {
+    .text-#{$color} {
+        color: $value;
     }
 }
 
@@ -58,10 +52,22 @@
 
 }
 
-@mixin background_color($color, $value) {
+@mixin custom_button($name, $button) {
+    $background_color: map-get($button, "background");
+    $text_color: map-get($button, "text_color");
 
-    .bg-#{$color} {
-        background-color: $value;
+    .btn-#{$name} {
+        background-color: $background_color;
+        color: $text_color;
+        transition: all 0.1s ease-in-out;
+        border: 0;
+        font-size: 14px;
+        border-radius: .2rem;
+        padding: 5px 15px;
+
+        &:hover {
+            background-color: lighten($background_color, 15);
+            color: lighten($text_color, 10)
+        }
     }
-
 }

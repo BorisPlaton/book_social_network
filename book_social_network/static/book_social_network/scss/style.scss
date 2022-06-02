@@ -9,16 +9,13 @@
     @include link_styles($color, $value);
     @include border_line($color, $value);
     @include background_color($color, $value);
+    @include coloted_text($color, $value);
 }
 
-body {
+html, body {
     background-color: $darkblue;
     color: white;
-}
-
-a {
-    text-decoration: none;
-    transition: all 0.1s ease-in-out;
+    height: 100%;
 }
 
 header {
@@ -35,10 +32,19 @@ nav {
     font-size: 16px;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+main {
+    flex: 1 1 auto;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.1s ease-in;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .blue-line {

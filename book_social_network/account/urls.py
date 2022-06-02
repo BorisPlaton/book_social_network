@@ -8,6 +8,8 @@ from account import views
 app_name = 'account'
 
 urlpatterns = [
+    path('edit/', views.edit_profile, name='edit_profile'),
+    path('registration/', views.registration, name='registration'),
     path('password_change/done/', views.password_change_done, name='change_password_done'),
     path('password_reset/done/', views.password_reset_done, name='password_reset_done'),
     path('reset/done/', views.password_reset_complete, name='password_reset_complete'),

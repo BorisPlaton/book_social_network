@@ -15,7 +15,7 @@
                 <div class="row justify-content-end">
                     {% if user.is_authenticated %}
                     <div class="col-auto">
-                        <a href=""><i class="bi bi-person-circle me-1"></i>My profile</a>
+                        <span class="text-lightgrey"><i class="bi bi-person-circle me-1"></i>{{ user.username }}</span>
                     </div>
                     <div class="col-auto"><a href="{% url 'account:logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
                     {% else %}
