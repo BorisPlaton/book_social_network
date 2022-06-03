@@ -21,8 +21,9 @@ INSTALLED_APPS = [
 
     'social_django',
 
-    'bookmarks',
     'account',
+    'bookmarks',
+    'images',
 ]
 
 MIDDLEWARE = [
