@@ -1,5 +1,4 @@
 from django import template
-from django.urls import reverse
 
 
 register = template.Library()
@@ -20,9 +19,3 @@ def text_input(field, **kwargs):
 
     field.field.widget.attrs.update(attrs)
     return {'field': field}
-
-
-@register.simple_tag
-def current_section(current_url: str, url_name: str) -> str | None:
-    if reverse(url_name) == current_url:
-        return 'link-primary'

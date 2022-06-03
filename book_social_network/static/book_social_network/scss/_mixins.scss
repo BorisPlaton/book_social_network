@@ -52,18 +52,33 @@
 
 }
 
+@mixin abs_button($name, $background_color, $text_color){
+    background-color: $background_color;
+    color: $text_color;
+    transition: all 0.1s ease-in-out;
+    border: 0;
+    font-size: 14px;
+    border-radius: .2rem;
+    padding: 7px 11px;
+}
+
 @mixin custom_button($name, $button) {
     $background_color: map-get($button, "background");
     $text_color: map-get($button, "text_color");
 
     .btn-#{$name} {
-        background-color: $background_color;
-        color: $text_color;
-        transition: all 0.1s ease-in-out;
-        border: 0;
-        font-size: 14px;
-        border-radius: .2rem;
-        padding: 5px 15px;
+        @include abs_button($name, $background_color, $text_color);
+
+        padding: 9px 12px;
+
+        &:hover {
+            background-color: lighten($background_color, 15);
+            color: lighten($text_color, 10)
+        }
+    }
+
+    .btn-#{$name}-sm {
+        @include abs_button($name, $background_color, $text_color);
 
         &:hover {
             background-color: lighten($background_color, 15);

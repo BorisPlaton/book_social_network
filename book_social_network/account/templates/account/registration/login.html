@@ -27,16 +27,22 @@
                 <a href="{% url 'account:registration' %}">
                     <small>Create an account</small>
                 </a>
+                <br>
+                <br>
+                <a href="{% url 'social:begin' 'github' %}">
+                    <small>Sign in with Github</small>
+                </a>
             </div>
 
             <div class="col">
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn-darkblue">Sign in</button>
+                    <button type="submit" class="btn-darkblue-sm">Sign in</button>
                 </div>
             </div>
 
         </div>
 
     </form>
+
 </div>
 {% endblock %}

@@ -16,6 +16,7 @@ def edit_profile(request):
         if profile_form.is_valid() and user_form.is_valid():
             profile_form.save()
             user_form.save()
+            messages.success(request, "Changes were saved")
             return redirect('account:edit_profile')
 
     return render(request, 'account/edit_profile.html', {'profile_form': profile_form, 'user_form': user_form})

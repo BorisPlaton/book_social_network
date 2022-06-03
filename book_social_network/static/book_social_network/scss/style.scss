@@ -50,3 +50,13 @@ a {
 .blue-line {
     border-bottom: 1px solid $greyblue;
 }
+
+.dropdown-menu-link {
+    padding: 4px 5px;
+    transition: all 0.1s ease-in-out;
+
+    &:hover{
+        background-color: darken($greyblue, 5);
+        color: lighten($snow, 25%);
+    }
+}

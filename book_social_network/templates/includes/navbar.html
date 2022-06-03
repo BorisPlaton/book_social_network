@@ -1,26 +1,48 @@
-{% load account_tags %}
-<!-- visible part -->
+<!-- Visible part -->
 <div class="d-lg-block d-none py-2 shadow-sm border-greyblue-bottom border-greyblue-top bg-indigo">
     <div class="container">
 
-        <div class="row">
+        <div class="row align-items-center">
             {% if user.is_authenticated %}
             <div class="col-auto">
-                <a href="{% url 'account:dashboard' %}" class="{% current_section request.path 'account:dashboard' %}">My dashboard</a>
+                <a href="{% url 'account:dashboard' %}">My dashboard</a>
             </div>
             <div class="col-auto"><a href="">Images</a></div>
             <div class="col-auto"><a href="">People</a></div>
             {% endif %}
             <div class="col">
-                <div class="row justify-content-end">
+                <div class="row justify-content-end align-items-center">
                     {% if user.is_authenticated %}
                     <div class="col-auto">
-                        <span class="text-lightgrey"><i class="bi bi-person-circle me-1"></i>{{ user.username }}</span>
+
+                        <!--Dropdown user menu-->
+                        <div class="dropdown">
+                            <a class="btn btn-deepblue shadow-sm dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="text-lightgrey"><i class="bi bi-person-circle me-1"></i>{{ user.username }}</span>
+                            </a>
+                            <ul class="dropdown-menu bg-deepblue border-greyblue text-snow shadow" aria-labelledby="dropdownMenuLink">
+                                <a href="{% url 'account:edit_profile' %}">
+                                    <li class="dropdown-menu-link">
+                                        <small><i class="bi bi-pencil-square me-1"></i>Edit profile</small>
+                                    </li>
+                                </a>
+                                <a href="{% url 'account:change_password' %}">
+                                    <li class="dropdown-menu-link">
+                                        <small><i class="bi bi-key me-1"></i>Change password</small>
+                                    </li>
+                                </a>
+                              <a href="{% url 'account:logout' %}">
+                                  <li class="dropdown-menu-link">
+                                      <small><i class="bi bi-box-arrow-in-right me-1"></i>Log out</small>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+
                     </div>
-                    <div class="col-auto"><a href="{% url 'account:logout' %}"><i class="bi bi-box-arrow-left me-1"></i>Log out</a></div>
                     {% else %}
                     <div class="col-auto">
-                        <a href="{% url 'account:login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log in</a>
+                        <a href="{% url 'account:login' %}"><i class="bi bi-box-arrow-in-right me-1"></i>Log out</a>
                     </div>
                     {% endif %}
                 </div>
@@ -30,7 +52,7 @@
     </div>
 </div>
 
-<!-- collapse part -->
+<!-- Collapse part -->
 <div class="py-2 d-lg-none d-block border-greyblue-bottom border-greyblue-top bg-indigo">
     <div class="container">
         <button class="btn-deepblue shadow-sm " type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar">
@@ -46,9 +68,15 @@
             <div class="py-2 shadow-sm">
                 <div class="row row-cols-1">
                     {% if user.is_authenticated %}
-                    <div class="col"><a href=""><i class="bi bi-person-circle me-1"></i>My profile</a></div>
                     <div class="col">
-                        <a href="{% url 'account:dashboard' %}" class="{% current_section request.path 'account:dashboard' %}"><i class="bi bi-view-stacked me-1"></i>My Dashboard</a>
+                        <span class="text-snow"><i class="bi bi-person-circle me-1"></i>{{ user.username }}</span>
+                        <ul class="m-0">
+                            <li><a href=""><i class="bi bi-pencil-square me-1"></i>Edit profile</a></li>
+                            <li><a href=""><i class="bi bi-key me-1"></i>Change password</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'account:dashboard' %}"><i class="bi bi-view-stacked me-1"></i>My Dashboard</a>
                     </div>
                     <div class="col"><a href=""><i class="bi bi-image me-1"></i>Images</a></div>
                     <div class="col"><a href=""><i class="bi bi-people-fill me-1"></i>People</a></div>

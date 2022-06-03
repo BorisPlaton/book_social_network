@@ -6,10 +6,27 @@
   border: 0;
   font-size: 14px;
   border-radius: .2rem;
-  padding: 5px 15px;
+  padding: 7px 11px;
+  padding: 9px 12px;
 }
 
 .btn-darkblue:hover {
+  background-color: #33517d;
+  color: white;
+}
+
+.btn-darkblue-sm {
+  background-color: #1d2e47;
+  color: #f2f2f2;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  border-radius: .2rem;
+  padding: 7px 11px;
+}
+
+.btn-darkblue-sm:hover {
   background-color: #33517d;
   color: white;
 }
@@ -22,10 +39,27 @@
   border: 0;
   font-size: 14px;
   border-radius: .2rem;
-  padding: 5px 15px;
+  padding: 7px 11px;
+  padding: 9px 12px;
 }
 
 .btn-greyblue:hover {
+  background-color: #4a6da5;
+  color: white;
+}
+
+.btn-greyblue-sm {
+  background-color: #324a70;
+  color: #f2f2f2;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  border-radius: .2rem;
+  padding: 7px 11px;
+}
+
+.btn-greyblue-sm:hover {
   background-color: #4a6da5;
   color: white;
 }
@@ -38,10 +72,27 @@
   border: 0;
   font-size: 14px;
   border-radius: .2rem;
-  padding: 5px 15px;
+  padding: 7px 11px;
+  padding: 9px 12px;
 }
 
 .btn-indigo:hover {
+  background-color: #294876;
+  color: white;
+}
+
+.btn-indigo-sm {
+  background-color: #15253d;
+  color: #f2f2f2;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  border-radius: .2rem;
+  padding: 7px 11px;
+}
+
+.btn-indigo-sm:hover {
   background-color: #294876;
   color: white;
 }
@@ -54,10 +105,27 @@
   border: 0;
   font-size: 14px;
   border-radius: .2rem;
-  padding: 5px 15px;
+  padding: 7px 11px;
+  padding: 9px 12px;
 }
 
 .btn-deepblue:hover {
+  background-color: #1f395d;
+  color: white;
+}
+
+.btn-deepblue-sm {
+  background-color: #0c1624;
+  color: #f2f2f2;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  border-radius: .2rem;
+  padding: 7px 11px;
+}
+
+.btn-deepblue-sm:hover {
   background-color: #1f395d;
   color: white;
 }
@@ -366,4 +434,15 @@ a {
 
 .blue-line {
   border-bottom: 1px solid #324a70;
+}
+
+.dropdown-menu-link {
+  padding: 4px 5px;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.dropdown-menu-link:hover {
+  background-color: #2a3e5e;
+  color: white;
 }
