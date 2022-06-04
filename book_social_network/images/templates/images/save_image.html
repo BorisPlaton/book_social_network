@@ -1,0 +1,15 @@
+{% extends 'base_content.html' %}
+{% load account_tags %}
+
+{% block page_content %}
+<img src="{{ request.GET.url }}" alt="Image">
+<form action="?title={{ request.GET.title }}&url={{ request.GET.url }}" method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="mb-2">
+        {% text_input field placeholder=field.label %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn-darkblue">Bookmark it</button>
+</form>
+{% endblock %}
