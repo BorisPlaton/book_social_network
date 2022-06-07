@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -9,7 +10,6 @@ class Image(models.Model):
     )
     title = models.CharField("Image title", max_length=128)
     slug = models.SlugField("Image slug", blank=True)
-    url = models.URLField("Image url")
     image = models.ImageField("Picture", upload_to='users/%Y/%m/%d/')
     description = models.TextField(max_length=512, blank=True)
     created = models.DateTimeField("Created at", auto_now_add=True, db_index=True)
@@ -21,6 +21,9 @@ class Image(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('images:image_details', args=[self.pk, self.slug])
 
     def __str__(self):
         return self.title

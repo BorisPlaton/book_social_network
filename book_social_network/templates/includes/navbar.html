@@ -26,11 +26,13 @@
                                         <small><i class="bi bi-pencil-square me-1"></i>Edit profile</small>
                                     </li>
                                 </a>
+                                {% if not backends.associated %}
                                 <a href="{% url 'account:change_password' %}">
                                     <li class="dropdown-menu-link">
                                         <small><i class="bi bi-key me-1"></i>Change password</small>
                                     </li>
                                 </a>
+                                {% endif %}
                               <a href="{% url 'account:logout' %}">
                                   <li class="dropdown-menu-link">
                                       <small><i class="bi bi-box-arrow-in-right me-1"></i>Log out</small>

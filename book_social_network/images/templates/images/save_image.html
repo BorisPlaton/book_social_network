@@ -3,14 +3,11 @@
 {% load static %}
 
 {% block page_content %}
-<form action="?title={{ request.GET.title }}&url={{ request.GET.url }}" method="post" novalidate>
-    {% csrf_token %} {% for field in form %}
+<form action="{% url 'images:save_image' %}" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
     <div class="mb-2">{% text_input field placeholder=field.label %}</div>
     {% endfor %}
-    <button type="submit" class="btn-darkblue">Bookmark it</button>
+    <button type="submit" class="btn-darkblue">Save</button>
 </form>
-{% endblock %}
-
-{% block script %}
-<script src="{% static 'images/js/images.js' %}"></script>
 {% endblock %}

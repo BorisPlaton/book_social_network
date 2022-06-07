@@ -1,8 +1,9 @@
+db.sqlite3
+media
+
 .idea
 __pycache__
 .env
-db.sqlite3
-
 bin/
 lib/
 lib64/

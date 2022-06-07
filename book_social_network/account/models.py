@@ -9,6 +9,10 @@ class User(AbstractUser):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
+    # def is_authenticated_via_oauth(self):
+    #     return self in
+
+
 
 class Profile(models.Model):
     user = models.OneToOneField(verbose_name="User", to=User, on_delete=models.CASCADE, related_name='profile')
