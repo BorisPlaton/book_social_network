@@ -2,61 +2,62 @@
 @import "_mixins.scss";
 
 @each $button, $style in $buttons {
-    @include custom_button($button, $style);
+  @include custom_button($button, $style);
 }
 
 @each $color, $value in $colors {
-    @include link_styles($color, $value);
-    @include border_line($color, $value);
-    @include background_color($color, $value);
-    @include coloted_text($color, $value);
+  @include link_styles($color, $value);
+  @include border_line($color, $value);
+  @include background_color($color, $value);
+  @include coloted_text($color, $value);
 }
 
-html, body {
-    background-color: $darkblue;
-    color: white;
-    height: 100%;
+html,
+body {
+  background-color: $darkblue;
+  color: white;
+  height: 100%;
 }
 
 header {
-    color: white;
-    .logo {
-        font-size: 24px;
-    }
+  color: white;
+  .logo {
+    font-size: 24px;
+  }
 }
 
 nav {
-    @include get_colored_link($lightgrey);
+  @include get_colored_link($lightgrey);
 
-    color: white;
-    font-size: 16px;
+  color: white;
+  font-size: 16px;
 }
 
 main {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 a {
-    text-decoration: none;
-    transition: all 0.1s ease-in;
+  text-decoration: none;
+  transition: all 0.1s ease-in;
 }
 
 .wrapper {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .blue-line {
-    border-bottom: 1px solid $greyblue;
+  border-bottom: 1px solid $greyblue;
 }
 
 .dropdown-menu-link {
-    padding: 4px 5px;
-    transition: all 0.1s ease-in-out;
+  padding: 4px 5px;
+  transition: all 0.1s ease-in-out;
 
-    &:hover{
-        background-color: darken($greyblue, 5);
-        color: lighten($snow, 25%);
-    }
+  &:hover {
+    background-color: darken($greyblue, 5);
+    color: lighten($snow, 25%);
+  }
 }

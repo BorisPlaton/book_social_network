@@ -1,88 +1,84 @@
 @mixin get_colored_link($color) {
-    a {
-        color: $color;
+  a {
+    color: $color;
 
-        &:hover{
-            color: lighten($color, 25%)
-        }
+    &:hover {
+      color: lighten($color, 25%);
     }
+  }
 }
 
 @mixin link_styles($color, $value) {
-    a.link-#{$color} {
-        color: $value;
+  a.link-#{$color} {
+    color: $value;
 
-        &:hover{
-            color: lighten($value, 15%)
-        }
+    &:hover {
+      color: lighten($value, 15%);
     }
+  }
 }
 
 @mixin background_color($color, $value) {
-
-    .bg-#{$color} {
-        background-color: $value;
-    }
-
+  .bg-#{$color} {
+    background-color: $value;
+  }
 }
 
 @mixin coloted_text($color, $value) {
-    .text-#{$color} {
-        color: $value;
-    }
+  .text-#{$color} {
+    color: $value;
+  }
 }
 
 @mixin border_line($color, $value) {
-
-    .border-#{$color}-top{
-        border-top: 1px solid $value;
-    }
-    .border-#{$color}-bottom{
-        border-bottom: 1px solid $value;
-    }
-    .border-#{$color}-start{
-        border-left: 1px solid $value;
-    }
-    .border-#{$color}-end{
-        border-right: 1px solid $value;
-    }
-    .border-#{$color}{
-        border: 1px solid $value;
-    }
-
+  .border-#{$color}-top {
+    border-top: 1px solid $value;
+  }
+  .border-#{$color}-bottom {
+    border-bottom: 1px solid $value;
+  }
+  .border-#{$color}-start {
+    border-left: 1px solid $value;
+  }
+  .border-#{$color}-end {
+    border-right: 1px solid $value;
+  }
+  .border-#{$color} {
+    border: 1px solid $value;
+  }
 }
 
-@mixin abs_button($name, $background_color, $text_color){
-    background-color: $background_color;
-    color: $text_color;
-    transition: all 0.1s ease-in-out;
-    border: 0;
-    font-size: 14px;
-    border-radius: .2rem;
-    padding: 7px 11px;
+@mixin abs_button($name, $background_color, $text_color) {
+  background-color: $background_color;
+  color: $text_color;
+  transition: all 0.1s ease-in-out;
+  border: 0;
+  font-size: 14px;
+  border-radius: 0.2rem;
+  padding: 7px 11px;
 }
 
 @mixin custom_button($name, $button) {
-    $background_color: map-get($button, "background");
-    $text_color: map-get($button, "text_color");
+  $background_color: map-get($button, "background");
+  $text_color: map-get($button, "text_color");
 
-    .btn-#{$name} {
-        @include abs_button($name, $background_color, $text_color);
+  .btn-#{$name} {
+    @include abs_button($name, $background_color, $text_color);
 
-        padding: 9px 12px;
+    padding: 9px 12px;
 
-        &:hover {
-            background-color: lighten($background_color, 15);
-            color: lighten($text_color, 10)
-        }
+    &:hover {
+      background-color: lighten($background_color, 15);
+      color: lighten($text_color, 10);
     }
+  }
 
-    .btn-#{$name}-sm {
-        @include abs_button($name, $background_color, $text_color);
+  .btn-#{$name}-sm {
+    @include abs_button($name, $background_color, $text_color);
 
-        &:hover {
-            background-color: lighten($background_color, 15);
-            color: lighten($text_color, 10)
-        }
+    &:hover {
+      background-color: lighten($background_color, 15);
+      color: lighten($text_color, 10);
     }
+  }
 }

@@ -11,7 +11,6 @@ class CreateImageForm(forms.ModelForm):
     class Meta:
         model = Image
         fields = ['url', 'title', 'description']
-        widgets = {'url': forms.HiddenInput}
         error_messages = {
             'url': {'required': 'You must pass the url of the photo.'}
         }

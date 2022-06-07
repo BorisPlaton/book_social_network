@@ -1,36 +1,35 @@
 $colors: (
-    "darkblue": #1d2e47,
-    "gold": #eb9a17,
-    "lightgrey": #e8e8e8,
-    "greyblue": #324a70,
-    "deepblue": #0c1624,
-    "snow": #f2f2f2,
-    "indigo": #15253d,
+  "darkblue": #1d2e47,
+  "gold": #eb9a17,
+  "lightgrey": #e8e8e8,
+  "greyblue": #324a70,
+  "deepblue": #0c1624,
+  "snow": #f2f2f2,
+  "indigo": #15253d,
 );
 $darkblue: map-get($colors, "darkblue");
 $gold: map-get($colors, "gold");
 $lightgrey: map-get($colors, "lightgrey");
 $greyblue: map-get($colors, "greyblue");
-$snow: map-get($colors, 'snow');
-$deepblue: map-get($colors, 'deepblue');
-$indigo: map-get($colors, 'indigo');
+$snow: map-get($colors, "snow");
+$deepblue: map-get($colors, "deepblue");
+$indigo: map-get($colors, "indigo");
 
 $buttons: (
-    "darkblue": (
-        "background": $darkblue,
-        "text_color": $snow,
-    ),
-    "greyblue": (
-        "background": $greyblue,
-        "text_color": $snow,
-    ),
-    "indigo": (
-        "background": $indigo,
-        "text_color": $snow,
-    ),
-    "deepblue": (
-        "background": $deepblue,
-        "text_color": $snow,
-    ),
+  "darkblue": (
+    "background": $darkblue,
+    "text_color": $snow,
+  ),
+  "greyblue": (
+    "background": $greyblue,
+    "text_color": $snow,
+  ),
+  "indigo": (
+    "background": $indigo,
+    "text_color": $snow,
+  ),
+  "deepblue": (
+    "background": $deepblue,
+    "text_color": $snow,
+  ),
 );
-
