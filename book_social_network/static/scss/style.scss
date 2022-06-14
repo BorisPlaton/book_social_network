@@ -9,12 +9,12 @@
   @include link_styles($color, $value);
   @include border_line($color, $value);
   @include background_color($color, $value);
-  @include coloted_text($color, $value);
+  @include colored_text($color, $value);
 }
 
 html,
 body {
-  background-color: $darkblue;
+  background-color: #1d2e47;
   color: white;
   height: 100%;
 }
@@ -40,6 +40,14 @@ main {
 a {
   text-decoration: none;
   transition: all 0.1s ease-in;
+}
+
+.chain-link a {
+  visibility: hidden;
+}
+
+.chain-link:hover a {
+  visibility: visible;
 }
 
 .wrapper {

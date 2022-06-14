@@ -24,7 +24,7 @@
   }
 }
 
-@mixin coloted_text($color, $value) {
+@mixin colored_text($color, $value) {
   .text-#{$color} {
     color: $value;
   }

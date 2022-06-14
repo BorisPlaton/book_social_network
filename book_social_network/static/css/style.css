@@ -5,7 +5,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
   padding: 9px 12px;
 }
@@ -22,7 +22,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
 }
 
@@ -38,7 +38,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
   padding: 9px 12px;
 }
@@ -55,7 +55,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
 }
 
@@ -71,7 +71,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
   padding: 9px 12px;
 }
@@ -88,7 +88,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
 }
 
@@ -104,7 +104,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
   padding: 9px 12px;
 }
@@ -121,7 +121,7 @@
   transition: all 0.1s ease-in-out;
   border: 0;
   font-size: 14px;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   padding: 7px 11px;
 }
 
@@ -382,7 +382,8 @@ a.link-indigo:hover {
   color: #15253d;
 }
 
-html, body {
+html,
+body {
   background-color: #1d2e47;
   color: white;
   height: 100%;
@@ -419,6 +420,14 @@ a {
   text-decoration: none;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
+}
+
+.chain-link a {
+  visibility: hidden;
+}
+
+.chain-link:hover a {
+  visibility: visible;
 }
 
 .wrapper {
