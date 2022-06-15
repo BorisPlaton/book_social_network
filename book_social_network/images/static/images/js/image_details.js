@@ -1,17 +1,87 @@
-const thumbUpButton = document.querySelector("span a.link-success");
-const likesAmount = document.querySelector;
+const likeLink = document.querySelector("span a.link-success");
+const likesAmount = document.querySelector("span.likes");
 
-thumbUpButton.addEventListener("click", (event) => {
-  const id = thumbUpButton.dataset.id;
-  const action = thumbUpButton.dataset.action;
-  const url = thumbUpButton.dataset.url;
+document.addEventListener("DOMContentLoaded", () => {
+  const newIcon = document.createElement("i");
+  const oldIcon = likeLink.querySelector("i");
+  console.log(newIcon);
+  switch (likeLink.dataset.action) {
+    case "like":
+      newIcon.className = "bi bi-hand-thumbs-up";
+      break;
+    case "unlike":
+      newIcon.className = "bi bi-hand-thumbs-up-fill";
+      likesAmount.classList.add("bg-success");
+      break;
+  }
 
-  likeImage(url, id, action);
+  likeLink.removeChild(oldIcon);
+  likeLink.appendChild(newIcon);
+});
+
+likeLink.addEventListener("click", (event) => {
+  const id = likeLink.dataset.id;
+  const action = likeLink.dataset.action;
+  const url = likeLink.dataset.url;
+  likeImage(url, id, action)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => console.error(err));
 });
 
 function likeImage(url, image_id, image_action) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", url, true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  console.log(xhr.send(`id=${image_id}&action=${image_action}`));
+  changeLikeState(image_action);
+
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.responseType = "json";
+
+    xhr.addEventListener("load", () => {
+      if ((xhr.status >= 200) & (xhr.status < 300)) {
+        resolve(xhr.response);
+      } else {
+        reject(xhr.response);
+      }
+    });
+
+    xhr.send(`id=${image_id}&action=${image_action}`);
+  });
+}
+
+function changeLikeState(action) {
+  if (action == "unlike") {
+    likeLink.dataset.action = "like";
+    likesAmount.innerHTML--;
+    likesAmount.classList.remove("bg-success");
+  } else {
+    likesAmount.innerHTML++;
+    likeLink.dataset.action = "unlike";
+    likesAmount.classList.add("bg-success");
+  }
+
+  changeThumbIcon(action);
+}
+
+function changeThumbIcon(action) {
+  const newIcon = document.createElement("i");
+  const oldIcon = likeLink.querySelector("i");
+
+  switch (action) {
+    case "like":
+      newIcon.className = "bi bi-hand-thumbs-up-fill";
+      break;
+    case "unlike":
+      newIcon.className = "bi bi-hand-thumbs-up";
+      break;
+    default:
+      throw new Error(`Wrong action given - ${action}`);
+  }
+
+  likeLink.removeChild(oldIcon);
+  likeLink.appendChild(newIcon);
+
+  return newIcon;
 }

@@ -7,7 +7,8 @@ def setup_additional_image_fields(user: User, image: Image):
     image.save()
 
 
-def like_image(image: Image, action: str, user: User) -> bool:
+def like_image(image_id: int, action: str, user: User) -> bool:
+    image = Image.objects.get(pk=image_id)
     match action:
         case "like":
             image.user_likes.add(user)
@@ -17,5 +18,3 @@ def like_image(image: Image, action: str, user: User) -> bool:
             return True
         case _:
             return False
-
-

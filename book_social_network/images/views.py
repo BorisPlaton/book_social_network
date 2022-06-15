@@ -28,9 +28,9 @@ def save_image(request):
 @require_POST
 @csrf_exempt
 def image_like(request):
-    image = Image.objects.get(pk=request.POST.get('id'))
+    image_id = request.POST.get('id')
     action = request.POST.get('action')
-    if like_image(image, action, request.user):
+    if like_image(image_id, action, request.user):
         return JsonResponse({'status': 'ok'})
     return JsonResponse({'status': 'failed'})
 

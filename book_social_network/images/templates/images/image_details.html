@@ -25,11 +25,9 @@
       <small>Created: {{ image.created|date:"G:i, j M, Y" }}</small>
       <br />
       <div class="mt-2">
-        <small>
-          <span class="p-1 px-2 bg-secondary rounded">
-            {{ image.user_likes.count }}
-          </span>
-        </small>
+        <span class="p-1 px-2 bg-secondary rounded likes">
+          {{ image.user_likes.count }}
+        </span>
         <span class="ms-1">
           <a
             href="#"
