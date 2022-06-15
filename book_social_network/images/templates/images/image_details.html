@@ -1,62 +1,59 @@
-{% extends 'base_content.html' %}
-{% load static %}
-{% load thumbnail %}
-
+{% extends 'base_content.html' %} {% load static %} {% load thumbnail %} 
 {% block page_content %}
 <div class="row g-3">
-
-    <div class="col-12">
-        <div class="d-flex justify-content-center">
-            {% if image.image|is_portrait %}
-            {% thumbnail image.image "300" as im %}
-            <img src="{{ im.url }}" alt="user-image">
-            {% endthumbnail %}
-            {% else %}
-            {% thumbnail image.image "x200" as im %}
-            <img src="{{ im.url }}" alt="user-image">
-            {% endthumbnail %}
-            {% endif %}
-        </div>
+  <div class="col-12">
+    <div class="d-flex justify-content-center">
+      {% if image.image|is_portrait %} {% thumbnail image.image "300" as im %}
+      <img src="{{ im.url }}" alt="user-image" />
+      {% endthumbnail %} {% else %} {% thumbnail image.image "x200" as im %}
+      <img src="{{ im.url }}" alt="user-image" />
+      {% endthumbnail %} {% endif %}
     </div>
+  </div>
 
-    <div class="col-12">
-        <div class=" blue-line"></div>
+  <div class="col-12">
+    <div class="blue-line"></div>
+  </div>
+
+  <div class="col-lg-5">
+    <h4>Info</h4>
+    <div class="py-2">
+      <small>Title: {{ image.title }}</small>
+      <br />
+      <small>Author: {{ image.user }}</small>
+      <br />
+      <small>Created: {{ image.created|date:"G:i, j M, Y" }}</small>
+      <br />
+      <div class="mt-2">
+        <small>
+          <span class="p-1 px-2 bg-secondary rounded">
+            {{ image.user_likes.count }}
+          </span>
+        </small>
+        <span class="ms-1">
+          <a
+            href="#"
+            class="link-success"
+            data-action="{% if user in image.user_likes.all %}unlike{% else %}like{% endif %}"
+            data-id="{{ image.pk }}"
+            data-url="{% url 'images:image_like' %}"
+          >
+            <i class="bi bi-hand-thumbs-up"></i>
+          </a>
+        </span>
+      </div>
     </div>
+  </div>
 
-    <div class="col-lg-5">
-        <h4>Info</h4>
-        <div class="py-2">
-            <small>Title: {{ image.title }}</small>
-            <br>
-            <small>Author: {{ image.user }}</small>
-            <br>
-            <small>Created: {{ image.created|date:"G:i, j M, Y" }}</small>
-            <br>
-            <div class="mt-2">
-                <small>
-                    <span class="p-1 px-2 bg-secondary rounded">{{ image.user_likes.count }}</span>
-                </small>
-                <span class="ms-1">
-                    <a href="" class="link-success"><i class="bi bi-hand-thumbs-up"></i></a>
-                    <a href="" class="link-danger"><i class="bi bi-hand-thumbs-down"></i></a>
-                </span>
-            </div>
-        </div>
+  <div class="col-lg-7">
+    <div class="">
+      {% if image.description %} {{ image.description|linebreaks }} {% else %}
+      <small>There is no description.</small>
+      {% endif %}
     </div>
-
-    <div class="col-lg-7">
-        <div class=''>
-            {% if image.description %}
-            {{ image.description|linebreaks }}
-            {% else %}
-            <small>There is no description.</small>
-            {% endif %}
-        </div>
-    </div>
-
+  </div>
 </div>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <script src="{% static 'images/js/image_details.js' %}"></script>
 {% endblock %}
