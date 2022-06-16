@@ -30,7 +30,7 @@
         </span>
         <span class="ms-1">
           <a
-            href="#"
+            href=""
             class="link-success"
             data-action="{% if user in image.user_likes.all %}unlike{% else %}like{% endif %}"
             data-id="{{ image.pk }}"
@@ -52,6 +52,6 @@
   </div>
 </div>
 {% endblock %} {% block script %}
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script src="{% static 'images/js/image_details.js' %}"></script>
 {% endblock %}

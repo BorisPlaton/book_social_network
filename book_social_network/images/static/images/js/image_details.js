@@ -4,7 +4,6 @@ const likesAmount = document.querySelector("span.likes");
 document.addEventListener("DOMContentLoaded", () => {
   const newIcon = document.createElement("i");
   const oldIcon = likeLink.querySelector("i");
-  console.log(newIcon);
   switch (likeLink.dataset.action) {
     case "like":
       newIcon.className = "bi bi-hand-thumbs-up";
@@ -20,23 +19,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 likeLink.addEventListener("click", (event) => {
+  event.preventDefault();
+
   const id = likeLink.dataset.id;
   const action = likeLink.dataset.action;
   const url = likeLink.dataset.url;
+
   likeImage(url, id, action)
-    .then((response) => {
-      console.log(response);
+    .then(() => {
+      changeLikeState(action);
     })
     .catch((err) => console.error(err));
 });
 
 function likeImage(url, image_id, image_action) {
-  changeLikeState(image_action);
-
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
+    const csrfToken = Cookies.get("csrftoken");
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("X-CSRFToken", csrfToken);
     xhr.responseType = "json";
 
     xhr.addEventListener("load", () => {
@@ -47,7 +49,7 @@ function likeImage(url, image_id, image_action) {
       }
     });
 
-    xhr.send(`id=${image_id}&action=${image_action}`);
+    xhr.send(`id=${image_id}&action=${image_action}sss`);
   });
 }
 

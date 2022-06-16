@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from account.decorators import unauthorized_required
 from account.forms import UserRegistrationForm, ProfileEditForm, UserEditForm
 from account.utils import create_user_and_profile
+from common.utils import get_paginator
+from images.models import Image
 
 
 @login_required
@@ -24,7 +26,12 @@ def edit_profile(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'account/dashboard.html', {'section': 'dashboard'})
+    image_paginator = get_paginator(
+        items_=Image.objects.filter(user=request.user),
+        per_page=4,
+        page=request.GET.get('page', 1),
+    )
+    return render(request, 'account/dashboard.html', {'image_paginator': image_paginator})
 
 
 @login_required
