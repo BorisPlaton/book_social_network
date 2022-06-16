@@ -1,32 +1,50 @@
 const imageBlock = document.querySelector(".images");
 
-window.addEventListener("scroll", () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    pagination.loadImages();
-  }
-});
+const url = imageBlock.dataset.content;
+let nextPage = 2;
 
-const pagination = {
-  next_page: 2,
-  url: imageBlock.dataset.content,
-  loadImages: () => {
-    pagination
-      .loadNewImages()
-      .then((response) => {
-        imageBlock.insertAdjacentHTML("beforeend", response);
-        next_page++;
-      })
-      .catch((error) => console.error(error));
+const infiniteObserver = new IntersectionObserver(
+  ([entries]) => {
+    if (entries.isIntersecting) {
+      loadNewImages()
+        .then((response) => {
+          imageBlock.insertAdjacentHTML("beforeend", response);
+          nextPage++;
+          infiniteObserver.unobserve(entries.target);
+          infiniteObserver.observe(getLastImageElement());
+        })
+        .catch((reason) => {
+          infiniteObserver.unobserve(entries.target);
+          console.error(reason);
+        });
+    }
   },
-  loadNewImages: () => {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      const url_with_page = pagination.url + `?page=${pagination.next_page}`;
-      xhr.open("get", url_with_page, true);
-      xhr.addEventListener("load", () => {
+  {
+    threshold: 0.7,
+  }
+);
+
+infiniteObserver.observe(getLastImageElement());
+
+function loadNewImages() {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const urlWithPage = url + `?page=${nextPage}`;
+    xhr.open("get", urlWithPage, true);
+
+    xhr.addEventListener("load", () => {
+      console.log(xhr.response);
+      if (xhr.response) {
         resolve(xhr.response);
-      });
-      xhr.send();
+      } else {
+        reject("Wrong page");
+      }
     });
-  },
-};
+
+    xhr.send();
+  });
+}
+
+function getLastImageElement() {
+  return imageBlock.querySelector("div.col-12:last-child");
+}

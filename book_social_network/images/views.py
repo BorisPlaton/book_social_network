@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.template.response import TemplateResponse
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, redirect, get_object_or_404
 
-from common.utils import get_paginator
+from common.utils import get_paginator_if_page_correct
 from images.forms import CreateImageForm
 from images.models import Image
 from images.utils import setup_additional_image_fields, like_image
@@ -44,9 +44,12 @@ def image_detail(request, pk, slug):
 
 @login_required
 def get_image_pagination(request):
-    image_paginator = get_paginator(
+    image_paginator = get_paginator_if_page_correct(
         items_=Image.objects.filter(user=request.user),
-        per_page=4,
-        page=request.GET.get('page', 1),
+        per_page=5,
+        page=int(request.GET.get('page', 1)),
     )
-    return TemplateResponse(request, "includes/image_pagination.html", {"images": image_paginator})
+    return (
+        TemplateResponse(request, "includes/image_pagination.html", {"images": image_paginator}) if image_paginator
+        else HttpResponse('')
+    )

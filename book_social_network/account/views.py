@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from account.decorators import unauthorized_required
@@ -28,10 +29,13 @@ def edit_profile(request):
 def dashboard(request):
     image_paginator = get_paginator(
         items_=Image.objects.filter(user=request.user),
-        per_page=4,
+        per_page=5,
         page=request.GET.get('page', 1),
     )
-    return render(request, 'account/dashboard.html', {'image_paginator': image_paginator})
+    return (render(request, 'account/dashboard.html', {'image_paginator': image_paginator})
+            if image_paginator
+            else HttpResponse(image_paginator)
+            )
 
 
 @login_required
