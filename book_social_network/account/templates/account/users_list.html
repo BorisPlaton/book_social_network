@@ -1,0 +1,32 @@
+{% extends 'base_content.html' %}
+{% load thumbnail %}
+
+{% block page_content %}
+<h3>People</h3>
+<div class="blue-line"></div>
+<div class="mt-2">
+    <div class="row g-3">
+        <!--People list-->
+        {% for user in users %}
+        <div class="col-12">
+            <div class="row">
+                <div class="col-auto d-flex align-items-center">
+                    {% with user.profile.photo as profile_pic %}
+                        {% thumbnail profile_pic "35x35" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="user-image"/>
+                        {% empty %}
+                        <i class="bi bi-person-circle me-1 fs-2"></i>
+                        {% endthumbnail %}
+                    {% endwith %}
+                    <a href="{{ user.get_absolute_url }}"><span class="ms-2">{{ user.username }}</span></a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col">
+            <p>You are a first user at the site.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

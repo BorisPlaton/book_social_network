@@ -46,7 +46,7 @@ def image_detail(request, pk, slug):
 def get_image_pagination(request):
     image_paginator = get_paginator_if_page_correct(
         items_=Image.objects.filter(user=request.user),
-        per_page=5,
+        per_page=2,
         page=int(request.GET.get('page', 1)),
     )
     return (

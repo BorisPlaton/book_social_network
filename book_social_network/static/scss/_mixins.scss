@@ -55,7 +55,7 @@
   border: 0;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 7px 11px;
+  padding: 5px 9px;
 }
 
 @mixin custom_button($name, $button) {
@@ -65,7 +65,7 @@
   .btn-#{$name} {
     @include abs_button($name, $background_color, $text_color);
 
-    padding: 9px 12px;
+    padding: 7px 13px;
 
     &:hover {
       background-color: lighten($background_color, 15);

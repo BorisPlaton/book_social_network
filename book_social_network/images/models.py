@@ -10,7 +10,7 @@ class Image(models.Model):
     )
     title = models.CharField("Image title", max_length=128)
     slug = models.SlugField("Image slug", blank=True)
-    image = models.ImageField("Picture", upload_to='users/%Y/%m/%d/')
+    image = models.ImageField("Picture", upload_to='images/%Y/%m/%d/')
     description = models.TextField(max_length=512, blank=True)
     created = models.DateTimeField("Created at", auto_now_add=True, db_index=True)
     user_likes = models.ManyToManyField(

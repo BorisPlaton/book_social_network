@@ -1,10 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from account.decorators import unauthorized_required
 from account.forms import UserRegistrationForm, ProfileEditForm, UserEditForm
+from account.models import User
 from account.utils import create_user_and_profile
 from common.utils import get_paginator
 from images.models import Image
@@ -29,7 +30,7 @@ def edit_profile(request):
 def dashboard(request):
     image_paginator = get_paginator(
         items_=Image.objects.filter(user=request.user),
-        per_page=5,
+        per_page=2,
         page=request.GET.get('page', 1),
     )
     return (render(request, 'account/dashboard.html', {'image_paginator': image_paginator})
@@ -67,3 +68,12 @@ def password_reset_done(request):
 def password_reset_complete(request):
     messages.success(request, "Password reset complete")
     return redirect('account:login')
+
+
+def users_list(request):
+    return render(request, 'account/users_list.html', {'users': User.objects.filter(is_active=True)})
+
+
+def user_profile(request, username):
+    user = get_object_or_404(User, username=username, is_active=True)
+    return render(request, 'account/user_profile.html', {'current_user': user})

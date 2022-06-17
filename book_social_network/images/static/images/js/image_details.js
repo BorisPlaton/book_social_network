@@ -26,7 +26,8 @@ likeLink.addEventListener("click", (event) => {
   const url = likeLink.dataset.url;
 
   likeImage(url, id, action)
-    .then(() => {
+    .then((response) => {
+      console.log(response);
       changeLikeState(action);
     })
     .catch((err) => console.error(err));
@@ -36,6 +37,7 @@ function likeImage(url, image_id, image_action) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     const csrfToken = Cookies.get("csrftoken");
+
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.setRequestHeader("X-CSRFToken", csrfToken);
@@ -49,7 +51,7 @@ function likeImage(url, image_id, image_action) {
       }
     });
 
-    xhr.send(`id=${image_id}&action=${image_action}sss`);
+    xhr.send(`id=${image_id}&action=${image_action}`);
   });
 }
 
@@ -69,7 +71,6 @@ function changeLikeState(action) {
 
 function changeThumbIcon(action) {
   const newIcon = document.createElement("i");
-  const oldIcon = likeLink.querySelector("i");
 
   switch (action) {
     case "like":
@@ -82,7 +83,7 @@ function changeThumbIcon(action) {
       throw new Error(`Wrong action given - ${action}`);
   }
 
-  likeLink.removeChild(oldIcon);
+  likeLink.innerHTML = "";
   likeLink.appendChild(newIcon);
 
   return newIcon;

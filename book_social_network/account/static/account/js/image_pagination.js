@@ -4,17 +4,17 @@ const url = imageBlock.dataset.content;
 let nextPage = 2;
 
 const infiniteObserver = new IntersectionObserver(
-  ([entries]) => {
-    if (entries.isIntersecting) {
+  ([entry]) => {
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
       loadNewImages()
         .then((response) => {
           imageBlock.insertAdjacentHTML("beforeend", response);
           nextPage++;
-          infiniteObserver.unobserve(entries.target);
+          infiniteObserver.unobserve(entry.target);
           infiniteObserver.observe(getLastImageElement());
         })
         .catch((reason) => {
-          infiniteObserver.unobserve(entries.target);
+          infiniteObserver.unobserve(entry.target);
           console.error(reason);
         });
     }

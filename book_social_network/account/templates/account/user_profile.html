@@ -1,0 +1,39 @@
+{% extends 'base_content.html' %}
+{% load thumbnail %}
+
+{% block page_content %}
+<h3>{{ current_user.username }}</h3>
+<div class="blue-line"></div>
+<div class="mt-2">
+    <div class="row g-2">
+        <div class="col-lg-auto col-12">
+            <div class=" d-flex justify-content-center align-items-center">
+                {% with current_user.profile.photo as profile_pic %}
+                {% thumbnail profile_pic "135" as im %}
+                <img src="{{ im.url }}" alt="user-image"/>
+                {% empty %}
+                <i class="bi bi-person-circle me-1 fs-1"></i>
+                {% endthumbnail %}
+                {% endwith %}
+            </div>
+        </div>
+        <div class="col">
+            <div class="row g-2 align-items-center">
+                <div class="col-auto">
+                    <div class="subscriptions bg-indigo border-darkblue rounded px-3 py-1">
+                        Subscriptions: <span>12</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="followers bg-indigo border-darkblue rounded px-3 py-1">
+                        Followers: <span>124</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button class="btn-greyblue-sm">Follow</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
