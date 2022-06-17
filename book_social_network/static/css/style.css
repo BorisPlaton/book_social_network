@@ -3,11 +3,11 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #1d2e47;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
-  padding: 7px 13px;
+  padding: 4px 8px;
+  padding: 6px 12px;
 }
 
 .btn-darkblue:hover {
@@ -20,10 +20,10 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #1d2e47;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
+  padding: 4px 8px;
 }
 
 .btn-darkblue-sm:hover {
@@ -36,11 +36,11 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #324a70;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
-  padding: 7px 13px;
+  padding: 4px 8px;
+  padding: 6px 12px;
 }
 
 .btn-greyblue:hover {
@@ -53,10 +53,10 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #324a70;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
+  padding: 4px 8px;
 }
 
 .btn-greyblue-sm:hover {
@@ -69,11 +69,11 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #15253d;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
-  padding: 7px 13px;
+  padding: 4px 8px;
+  padding: 6px 12px;
 }
 
 .btn-indigo:hover {
@@ -86,10 +86,10 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #15253d;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
+  padding: 4px 8px;
 }
 
 .btn-indigo-sm:hover {
@@ -102,11 +102,11 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #0c1624;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
-  padding: 7px 13px;
+  padding: 4px 8px;
+  padding: 6px 12px;
 }
 
 .btn-deepblue:hover {
@@ -119,10 +119,10 @@
   color: #f2f2f2;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  border: 0;
+  border: 1px solid #0c1624;
   font-size: 14px;
   border-radius: 0.2rem;
-  padding: 5px 9px;
+  padding: 4px 8px;
 }
 
 .btn-deepblue-sm:hover {
@@ -380,6 +380,13 @@ a.link-indigo:hover {
 
 .text-indigo {
   color: #15253d;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,

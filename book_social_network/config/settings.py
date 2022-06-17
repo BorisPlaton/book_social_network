@@ -118,6 +118,8 @@ LOGIN_URL = 'account:login'
 LOGIN_REDIRECT_URL = 'account:dashboard'
 LOGOUT_REDIRECT_URL = 'account:login'
 
+PAGINATION_PICTURES_AMOUNT = 10
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:

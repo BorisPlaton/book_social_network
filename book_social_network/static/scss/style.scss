@@ -12,6 +12,13 @@
   @include colored_text($color, $value);
 }
 
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html,
 body {
   background-color: #1d2e47;

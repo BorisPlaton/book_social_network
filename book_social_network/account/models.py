@@ -9,12 +9,15 @@ class User(AbstractUser):
         'self', through='Subscription', related_name='followers', symmetrical=False, verbose_name="Subscriptions"
     )
 
-    def get_absolute_url(self):
-        return reverse('account:user_profile', args=[self.username])
-
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+    def get_absolute_url(self):
+        return reverse('account:user_profile', args=[self.username])
+
+    def is_following(self, pk):
+        return self.subscriptions.filter(user_to__pk=pk).exists()
 
 
 class Profile(models.Model):

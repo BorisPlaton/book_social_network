@@ -1,13 +1,15 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 
 from account.decorators import unauthorized_required
 from account.forms import UserRegistrationForm, ProfileEditForm, UserEditForm
 from account.models import User
-from account.utils import create_user_and_profile
+from account.utils import create_user_and_profile, subscribe_user
 from common.utils import get_paginator
+from config import settings
 from images.models import Image
 
 
@@ -30,13 +32,10 @@ def edit_profile(request):
 def dashboard(request):
     image_paginator = get_paginator(
         items_=Image.objects.filter(user=request.user),
-        per_page=2,
+        per_page=settings.PAGINATION_PICTURES_AMOUNT,
         page=request.GET.get('page', 1),
     )
-    return (render(request, 'account/dashboard.html', {'image_paginator': image_paginator})
-            if image_paginator
-            else HttpResponse(image_paginator)
-            )
+    return (render(request, 'account/dashboard.html', {'image_paginator': image_paginator})            )
 
 
 @login_required
@@ -76,4 +75,26 @@ def users_list(request):
 
 def user_profile(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
-    return render(request, 'account/user_profile.html', {'current_user': user})
+    images = get_paginator(
+        items_=Image.objects.filter(user=user),
+        per_page=settings.PAGINATION_PICTURES_AMOUNT,
+        page=1,
+    )
+    return render(request, 'account/user_profile.html',
+                  {
+                      'current_user': user,
+                      'images': images,
+                      'is_following': request.user.is_following(user.pk)
+                  })
+
+
+@login_required
+@require_POST
+def follow(request):
+    user_follower = request.user
+    try:
+        followed_user = User.objects.get(is_active=True, pk=request.POST.get('id'))
+    except User.DoesNotExist:
+        return JsonResponse({'status': 'fail', 'reason': 'Wrong user'})
+    subscribe_user(user_follower, followed_user, True if request.POST.get('action').lower() == 'follow' else False)
+    return JsonResponse({'status': 'success'})

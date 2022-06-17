@@ -33,11 +33,10 @@ function loadNewImages() {
     xhr.open("get", urlWithPage, true);
 
     xhr.addEventListener("load", () => {
-      console.log(xhr.response);
       if (xhr.response) {
         resolve(xhr.response);
       } else {
-        reject("Wrong page");
+        reject("Empty page");
       }
     });
 

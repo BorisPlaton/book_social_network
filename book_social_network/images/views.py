@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
@@ -27,7 +28,6 @@ def save_image(request):
 
 @login_required
 @require_POST
-@login_required
 def image_like(request):
     image_id = request.POST.get('id')
     action = request.POST.get('action')
@@ -46,7 +46,7 @@ def image_detail(request, pk, slug):
 def get_image_pagination(request):
     image_paginator = get_paginator_if_page_correct(
         items_=Image.objects.filter(user=request.user),
-        per_page=2,
+        per_page=settings.PAGINATION_PICTURES_AMOUNT,
         page=int(request.GET.get('page', 1)),
     )
     return (
