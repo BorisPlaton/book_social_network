@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 
@@ -8,6 +8,7 @@ from account.decorators import unauthorized_required
 from account.forms import UserRegistrationForm, ProfileEditForm, UserEditForm
 from account.models import User
 from account.utils import create_user_and_profile, subscribe_user
+from actions.utils import get_followed_users_actions
 from common.utils import get_paginator
 from config import settings
 from images.models import Image
@@ -30,12 +31,12 @@ def edit_profile(request):
 
 @login_required
 def dashboard(request):
-    image_paginator = get_paginator(
-        items_=Image.objects.filter(user=request.user),
+    action_paginator = get_paginator(
+        items_=get_followed_users_actions(request.user),
         per_page=settings.PAGINATION_PICTURES_AMOUNT,
         page=request.GET.get('page', 1),
     )
-    return (render(request, 'account/dashboard.html', {'image_paginator': image_paginator})            )
+    return render(request, 'account/dashboard.html', {'actions': action_paginator})
 
 
 @login_required

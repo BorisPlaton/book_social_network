@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
 
     'account',
+    'actions',
     'images',
 ]
 

@@ -1,0 +1,46 @@
+{% load thumbnail %}
+
+{% for action in actions %}
+{% with author=action.user profile=action.user.profile %}
+<div class="col-12">
+    <div class="row g-1">
+
+        <!--Author profile picture and username-->
+        <div class="col-auto">
+            <div class="d-flex align-items-center">
+                {% thumbnail profile.photo "40x40" crop="center" as im %}
+                <img src="{{ im.url }}" alt="profile-pic">
+                {% empty %}
+                <i class="display-5 bi bi-person-circle me-1"></i>
+                {% endthumbnail %}
+                <div class="d-flex flex-column lead fs-6">
+                    <span class="ms-2">
+                        <a href="{{ author.get_absolute_url }}" class="link-light">
+                            {{ author.username }}
+                        </a>
+                    </span>
+                    <span class="ms-2">{{ action.action_time|timesince }} back</span>
+                </div>
+            </div>
+        </div>
+
+        <!--Description-->
+        <div class="col-12">
+            <div class="bg-indigo p-2 rounded">
+
+                <div class="d-flex align-items-center">
+                    {{ action.description }}
+                    <a href="{{ action.target.get_absolute_url }}" class="ms-1">{{ action.target }}</a>
+                    {% if action.target.image %}
+                    {% thumbnail action.target.image "40x40" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="profile-pic" class="ms-2">
+                    {% endthumbnail %}
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endwith %}
+{% endfor %}

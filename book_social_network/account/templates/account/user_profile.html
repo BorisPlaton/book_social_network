@@ -3,64 +3,63 @@
 {% load static %}
 
 {% block page_content %}
-<div class="mt-2">
-    <div class="row g-2">
+<div class="row g-2">
 
-        <div class="col-12">
-            <div class="bg-indigo rounded p-2">
-                <div class="row g-3">
-                    <!--Profile pic-->
-                    <div class="col-lg-auto col-12">
-                        <div class="d-flex justify-content-center align-items-center">
-                            {% with current_user.profile.photo as profile_pic %}
-                            {% thumbnail profile_pic "135" as im %}
-                            <img src="{{ im.url }}" alt="user-image"/>
-                            {% empty %}
-                            <i class="bi bi-person-circle fs-1 mt-2"></i>
-                            {% endthumbnail %}
-                            {% endwith %}
-                        </div>
+    <div class="col-12">
+        <div class="bg-indigo rounded p-2">
+            <div class="row g-3">
+                <!--Profile pic-->
+                <div class="col-lg-auto col-12">
+                    <div class="d-flex justify-content-center align-items-center">
+                        {% with current_user.profile.photo as profile_pic %}
+                        {% thumbnail profile_pic "135" as im %}
+                        <img src="{{ im.url }}" alt="user-image"/>
+                        {% empty %}
+                        <i class="bi bi-person-circle fs-1 mt-2"></i>
+                        {% endthumbnail %}
+                        {% endwith %}
                     </div>
+                </div>
 
-                    <!--User info-->
-                    <div class="col">
-                        <div class="row g-2 align-items-center">
-                            <div class="col-12">
-                                <h3 class="m-0">{{ current_user.username }}</h3>
+                <!--User info-->
+                <div class="col">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-12">
+                            <h3 class="m-0">{{ current_user.username }}</h3>
+                        </div>
+                        <div class="col-auto">
+                            <div class="subscriptions bg-deepblue rounded px-3 py-1">
+                                Subscriptions: <span>{{ current_user.subscriptions.count }}</span>
                             </div>
-                            <div class="col-auto">
-                                <div class="subscriptions bg-deepblue rounded px-3 py-1">
-                                    Subscriptions: <span>{{ current_user.subscriptions.count }}</span>
-                                </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="followers bg-deepblue rounded px-3 py-1">
+                                Followers: <span>{{ current_user.subscribers.count }}</span>
                             </div>
-                            <div class="col-auto">
-                                <div class="followers bg-deepblue rounded px-3 py-1">
-                                    Followers: <span>{{ current_user.subscribers.count }}</span>
-                                </div>
-                            </div>
-                            {% if current_user != user %}
-                            <div class="col-auto">
-                                <button 
-                                class="{% if is_following %}btn btn-success btn-sm{% else %}btn-greyblue-sm{% endif %} follow"
-                                data-id="{{ current_user.pk }}"
-                                data-url="{% url 'account:follow' %}"
-                                data-action="{% if is_following %}un{% endif %}follow">{% if is_following %}Unfollow{% else %}Follow{% endif %}</button>
-                            </div>
-                            {% endif %}
-                            <div class="col-12">
-                                <div class="d-flex align-items-center">
-                                    <div class="row row-cols-1 g-1">
-                                        <div class="col-auto d-flex align-items-center">
-                                            First name: <span
-                                                class="ms-1 bg-deepblue px-2 rounded">{% if current_user.first_name %}{{ current_user.first_name }}{% else %} - {% endif %}</span>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            Email: <span
-                                                class="ms-1 bg-deepblue px-2 rounded">{{ current_user.email }}</span>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            Pictures amount: <span class="ms-1 bg-deepblue px-2 rounded">{{ current_user.images_created.count }}</span>
-                                        </div>
+                        </div>
+                        {% if current_user != user %}
+                        <div class="col-auto">
+                            <button
+                                    class="{% if is_following %}btn btn-success btn-sm{% else %}btn-greyblue-sm{% endif %} follow"
+                                    data-id="{{ current_user.pk }}"
+                                    data-url="{% url 'account:follow' %}"
+                                    data-action="{% if is_following %}un{% endif %}follow">{% if is_following %}Unfollow{% else %}Follow{% endif %}
+                            </button>
+                        </div>
+                        {% endif %}
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <div class="row row-cols-1 g-1">
+                                    <div class="col-auto d-flex align-items-center">
+                                        First name: <span
+                                            class="ms-1 bg-deepblue px-2 rounded">{% if current_user.first_name %}{{ current_user.first_name }}{% else %} - {% endif %}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        Email: <span
+                                            class="ms-1 bg-deepblue px-2 rounded">{{ current_user.email }}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        Pictures amount: <span class="ms-1 bg-deepblue px-2 rounded">{{ current_user.images_created.count }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -69,17 +68,17 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-12">
-            <div class="border-greyblue-bottom mb-2 py-2">
-                <h4 class="">Pictures</h4>
-            </div>
-            <div class="row g-2 images" data-content="{% url 'images:get_image_pagination' %}">
-                {% include 'includes/image_pagination.html' with images=images %}
-            </div>
-        </div>
-
     </div>
+
+    <div class="col-12">
+        <div class="border-greyblue-bottom mb-2 py-2">
+            <h4 class="">Pictures</h4>
+        </div>
+        <div class="row g-2 images" data-content="{% url 'images:get_image_pagination' %}">
+            {% include 'includes/image_pagination.html' with images=images %}
+        </div>
+    </div>
+
 </div>
 {% endblock %}
 
@@ -87,6 +86,8 @@
 {% if images %}
 <script src="{% static 'account/js/image_pagination.js' %}"></script>
 {% endif %}
+{% if current_user != user %}
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script src="{% static 'account/js/follow_user.js' %}"></script>
+{% endif %}
 {% endblock %}

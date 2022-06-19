@@ -4,15 +4,12 @@
 <h3>Dashboard</h3>
 <div class="blue-line"></div>
 <div class="mt-2">
-    <div
-            class="row g-2 images"
-            data-content="{% url 'images:get_image_pagination' %}"
-    >
-        <!--Images-->
-        {% include 'includes/image_pagination.html' with images=image_paginator %}
+    <div class="row g-2 actions" data-content="{% url 'actions:action_pagination' %}">
+        <!--Actions-->
+        {% include 'actions/action_pagination.html' %}
     </div>
 </div>
 {% endblock %}
 {% block script %}
-<script src="{% static 'account/js/image_pagination.js' %}"></script>
+<script src="{% static 'account/js/action_pagination.js' %}"></script>
 {% endblock %}

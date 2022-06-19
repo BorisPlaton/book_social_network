@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
     path('images/', include('images.urls')),
+    path('actions/', include('actions.urls')),
     re_path('', include('social_django.urls', namespace='social'))
 ]
 
