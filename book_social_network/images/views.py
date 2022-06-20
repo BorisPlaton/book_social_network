@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from common.utils import get_paginator_if_page_correct
 from images.forms import CreateImageForm
 from images.models import Image
-from images.utils import setup_additional_image_fields, like_image
+from images.utils import setup_additional_image_fields, like_image, get_redis_image_total_views, increase_image_ranking
 
 
 @login_required
@@ -39,7 +39,13 @@ def image_like(request):
 @login_required
 def image_detail(request, pk, slug):
     image = get_object_or_404(Image, pk=pk, slug=slug)
-    return render(request, 'images/image_details.html', {'image': image})
+    total_views = get_redis_image_total_views(image.pk)
+    increase_image_ranking(image.pk)
+    return render(request, 'images/image_details.html',
+                  {
+                      'image': image,
+                      'total_views': total_views,
+                  })
 
 
 @login_required

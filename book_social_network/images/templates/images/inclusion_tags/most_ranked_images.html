@@ -1,0 +1,10 @@
+<div class="col-auto">
+    <div class="p-3 bg-deepblue rounded d-flex flex-column">
+        <div class="border-greyblue-bottom mb-1">
+            <h5>Most ranked images</h5>
+        </div>
+        {% for image in images %}
+        <a href="{{ image.get_absolute_url }}" class="link-snow">{{ image.title }}</a>
+        {% endfor %}
+    </div>
+</div>

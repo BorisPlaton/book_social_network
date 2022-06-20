@@ -121,6 +121,10 @@ LOGOUT_REDIRECT_URL = 'account:login'
 
 PAGINATION_PICTURES_AMOUNT = 10
 
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
+REDIS_DB = os.getenv('REDIS_DB')
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
